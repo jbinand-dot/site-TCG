@@ -1,0 +1,20 @@
+{
+  "name": "site-TCG",
+  "short_name": "TCG",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "img/1-bf89079a.ico",
+      "sizes": "192x192",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "img/1-bf89079a.ico",
+      "sizes": "512x512",
+      "type": "image/x-icon"
+    }
+  ]
+}

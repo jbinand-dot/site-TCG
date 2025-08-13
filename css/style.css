@@ -182,7 +182,7 @@ a, h3, h4, h5 {
     font-size: 1em; /* réduit la taille de la police */
   }
   .pokemon-btn {
-    font-size: 12px;
+    font-size: 10px;
     padding: 6px 12px;
   }
   a, h3, h4, h5{
@@ -197,6 +197,7 @@ a, h3, h4, h5 {
   .serielogo{
     width: 100%;
     padding-top: 15px;
+    padding-right: 5px
 }
 
 }
