@@ -170,7 +170,7 @@ a, h3, h4, h5 {
 
 @media (max-width: 768px) {
   .checkboxes {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
   }
   .checkboxes input[type="checkbox"] {
@@ -196,3 +196,4 @@ a, h3, h4, h5 {
   }
 
 }
+
