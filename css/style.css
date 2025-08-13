@@ -170,7 +170,7 @@ a, h3, h4, h5 {
 
 @media (max-width: 768px) {
   .checkboxes {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
   }
   .checkboxes input[type="checkbox"] {
@@ -189,11 +189,14 @@ a, h3, h4, h5 {
     font-size: 16px;
   }
   .logo img{
-    width: 40%;
+    width: 60%;
   }
   .casefooter{
     font-size: 10px;
   }
-
+  .serielogo{
+    width: 100%;
+    padding-top: 15px;
 }
 
+}
