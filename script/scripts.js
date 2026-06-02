@@ -266,26 +266,26 @@ document.addEventListener('DOMContentLoaded', () => {
     titreDiv.style.cursor = 'pointer';
 
     titreDiv.addEventListener('click', () => {
-      const containerSerie = titreDiv.closest('.container.text-center.serie');
-      if (!containerSerie) return;
 
-      const colonnes = Array.from(containerSerie.querySelectorAll('div[class*="col-"]'));
-      const parentColDuTitre = titreDiv.closest('div[class*="col-"]');
+      let element = titreDiv.parentElement.parentElement.nextElementSibling;
+      const elementsAMasquer = [];
 
-      let commencer = false;
-      colonnes.forEach(col => {
-        if (col === parentColDuTitre) {
-          commencer = true;
-          return; // On ne cache pas la colonne du titre lui-même
+      // On récupère tous les éléments jusqu'au prochain titre
+      while (element) {
+
+        if (element.querySelector('.contour2')) {
+          break; // Arrêter au prochain tiroir
         }
-        if (commencer) {
-          // Si la colonne contient une div .contour2, on ne la cache pas
-          if (col.querySelector('.contour2')) {
-            return; // ne rien faire
-          }
-          // Sinon toggle display
-          col.style.display = (col.style.display === 'none') ? '' : 'none';
-        }
+
+        elementsAMasquer.push(element);
+        element = element.nextElementSibling;
+      }
+
+      // Vérifie si actuellement caché
+      const estCache = elementsAMasquer[0]?.style.display === 'none';
+
+      elementsAMasquer.forEach(el => {
+        el.style.display = estCache ? '' : 'none';
       });
     });
   });
