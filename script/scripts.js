@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const pages = [
     'blk.html', 'wht.html', 'rd.html', 'av.html', 'evp.html',
     'ed.html', 'cs.html', 'fn.html', 'mc.html', 'ft.html',
-    'fp.html', '151.html', 'fo.html', 'ep.html', 'ev.html','mega.html'
+    'fp.html', '151.html', 'fo.html', 'ep.html', 'ev.html','mega.html','cri.html'
   ];
 
   // Fonction de filtrage des séries selon leur progression stockée
