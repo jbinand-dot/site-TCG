@@ -46,7 +46,6 @@ let upgradeSet = new Set();
 let sortMode = 'num'; // 'num' or 'az'
 let filterMode = 'all'; // 'all' | 'have' | 'upgrade' | 'missing'
 let searchTerm = '';
-let storageReady = false;
 
 const listEl = document.getElementById('pokedex-list');
 const countsEl = document.getElementById('pokedex-counts');
@@ -122,11 +121,10 @@ function render() {
   }).join('');
 }
 
-async function persist() {
-  if (!storageReady) return;
+function persist() {
   try {
-    await window.storage.set('have-pokemon', JSON.stringify(Array.from(haveSet)));
-    await window.storage.set('upgrade-pokemon', JSON.stringify(Array.from(upgradeSet)));
+    localStorage.setItem('have-pokemon', JSON.stringify(Array.from(haveSet)));
+    localStorage.setItem('upgrade-pokemon', JSON.stringify(Array.from(upgradeSet)));
   } catch (e) {
     console.error('Erreur de sauvegarde', e);
   }
@@ -190,19 +188,19 @@ btnBack.addEventListener('click', () => {
   }
 });
 
-async function init() {
+function init() {
   try {
-    const haveResult = await window.storage.get('have-pokemon');
-    if (haveResult && haveResult.value) {
-      haveSet = new Set(JSON.parse(haveResult.value));
+    const haveResult = localStorage.getItem('have-pokemon');
+    if (haveResult) {
+      haveSet = new Set(JSON.parse(haveResult));
     }
   } catch (e) {
     // pas encore de données
   }
   try {
-    const upgradeResult = await window.storage.get('upgrade-pokemon');
-    if (upgradeResult && upgradeResult.value) {
-      upgradeSet = new Set(JSON.parse(upgradeResult.value));
+    const upgradeResult = localStorage.getItem('upgrade-pokemon');
+    if (upgradeResult) {
+      upgradeSet = new Set(JSON.parse(upgradeResult));
     }
   } catch (e) {
     // pas encore de données
@@ -210,16 +208,15 @@ async function init() {
   // Migration depuis l'ancienne version (une seule case "checked-pokemon")
   if (haveSet.size === 0 && upgradeSet.size === 0) {
     try {
-      const oldResult = await window.storage.get('checked-pokemon');
-      if (oldResult && oldResult.value) {
-        haveSet = new Set(JSON.parse(oldResult.value));
-        await window.storage.set('have-pokemon', JSON.stringify(Array.from(haveSet)));
+      const oldResult = localStorage.getItem('checked-pokemon');
+      if (oldResult) {
+        haveSet = new Set(JSON.parse(oldResult));
+        localStorage.setItem('have-pokemon', JSON.stringify(Array.from(haveSet)));
       }
     } catch (e) {
       // rien à migrer
     }
   }
-  storageReady = true;
   loadingEl.style.display = 'none';
   render();
 }
