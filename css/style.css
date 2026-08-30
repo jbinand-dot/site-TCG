@@ -4,6 +4,27 @@ body {
     -moz-user-select: none;    /* Firefox */
     -ms-user-select: none;     /* Ancien Edge */
 }
+/* ===== Navigation (onglets) ===== */
+.nav-tabs {
+  border-bottom: 2px solid white;
+  justify-content: center;
+}
+
+.nav-tabs .nav-link {
+  color: #FFCC00;
+  background-color:#828bcb;;
+  border: 1px solid #3B4CCA;;
+  border-bottom: none;
+  margin: 0 2px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #FFCC00;
+  color:#828bcb ;
+  font-weight: bold;
+  border-color: #3B4CCA;
+}
 .back{
   background-image: url(../img/fond.jpg);
   background-position: center;
